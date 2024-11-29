@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+	<title>Nutzerverwaltung</title>
+</head>
+<body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <div class="container">
+        <h2>Kundenkonto</h2>
+        <!-- Anzeige der Benutzerinformationen -->
+        <p>Vorname: <span th:text="${customer.firstName}"></span></p>
+        <p>Nachname: <span th:text="${customer.lastName}"></span></p>
+        <p>Benutzername: <span th:text="${customer.loginname}"></span></p>
+    </div>
+    <div class="container">
+        <!-- Anzeige der Lieferadressen -->
+        <section>
+            <h3>Lieferadressen</h3>
+
+            <ul th:if="${customer.deliveryAddresses.size() > 0}" class="list-group">
+                <!-- Iteriere über die Lieferadressen und zeige sie an -->
+                <li th:each="address : ${customer.deliveryAddresses}" class="list-group-item">
+                    <span th:text="${address.street + ' ' + address.houseNumber + ', ' + address.postalCode + ' ' + address.town}"></span>
+                    <a th:href="@{'/deleteAddress/' + ${address.id}}" class="btn">Löschen</a>
+                </li>
+            </ul>
+
+            <p th:unless="${customer.deliveryAddresses.size() > 0}">Noch keine Lieferadressen hinterlegt</p>
+        </section>
+    </div>
+    <div class="container">
+        <!-- Formular zum Hinzufügen einer Lieferadresse -->
+        <form th:action="@{/addAddress}" method="post">
+            <h3>Lieferadresse hinzufügen</h3>
+
+            <div class="form-group">
+                <label for="street">Straße:</label>
+                <input type="text" class="form-control" id="street" name="street" required>
+            </div>
+
+            <div class="form-group">
+                <label for="houseNumber">Hausnummer:</label>
+                <input type="text" class="form-control" id="houseNumber" name="houseNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="postalCode">PLZ:</label>
+                <input type="text" class="form-control" id="postalCode" name="postalCode" required>
+            </div>
+
+            <div class="form-group">
+                <label for="town">Ort:</label>
+                <input type="text" class="form-control" id="town" name="town" required>
+            </div>
+
+            <button type="submit" class="btn">Hinzufügen</button>
+        </form>
+    </div> 
+    <div class="container">
+        <!-- Status-Abschnitt hier einfügen -->
+        <section class="container">
+            <h2>Status</h2>
+            <h3>Wenn der Status inakiv ist, dann können keine Bestellungen mehr getätigt werden.</h3>
+            <p>Status: <span th:text="${customer.active ? 'Aktiv' : 'Deaktiviert'}"></span></p>
+            <form action="@{/toggleStatus}" method="post">
+                <button type="submit" class="btn">Status ändern</button>
+            </form>
+        </section>
+    </div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

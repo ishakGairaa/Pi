@@ -1,0 +1,155 @@
+body {
+	background-color: #f0f0f0; /* Heller Hintergrund */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Stellt sicher, dass der Body mindestens die Höhe des Viewports hat */
+	padding-top: 120px; /* Platz für den festen Header */
+}
+
+.header {
+    position: fixed;
+	top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Optional: stellt sicher, dass der Header über anderem Inhalt liegt */
+}
+
+.logo img {
+	margin: 0; /* Optional: Fügt einen kleinen Außenabstand hinzu */
+	display: block;
+    height: 100px;
+	width: auto;
+}
+
+.title h1 {
+    margin: 0;
+    color: #333333;
+}
+
+.buttons {
+	display: flex;
+	gap: 10px;
+	right: 10px
+}
+
+.btn {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer p {
+    margin: 0;
+    color: #333333;
+}
+
+.container {
+	background-color: #ffffff; /* Weißer Hintergrund für Container */
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 80%;
+	max-width: 1000px;
+	margin-bottom: 20px; /* Abstand zwischen den Containern */
+}
+
+h2, h3 {
+    color: #333333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555555;
+}
+
+.form-control, .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+	table-layout: auto;
+}
+
+.table th, .table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+	white-space: nowrap; /* Verhindert Zeilenumbrüche innerhalb der Zellen */
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.alert {
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+/* Neue Klasse für die Auswahlfelder in der Spalte Menge */
+.quantity-select {
+    width: auto; /* Breite der Auswahlfelder anpassen */
+}
+
+.register.link {
+	padding-top: 10px;
+}
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.input {
+	width: 250px;
+	height: 30px;
+}

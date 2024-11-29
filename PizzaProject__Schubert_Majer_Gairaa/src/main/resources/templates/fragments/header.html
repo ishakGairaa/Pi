@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+           <img src="/images/hand-drawn-pizzeria-vintage-logo.png" alt="Logo">
+        </div>
+        <div class="title">
+            <h1>Pizza-Lieferdienst</h1>
+        </div>
+        <div class="buttons">
+            <div class="buttons" th:if="${currentUser.user != null}">
+        		<form th:action="@{/logout}" method="post">
+            		<button type="submit" class="btn">Logout</button>
+        		</form>
+	    	</div>
+	    <!-- kein Benutzer eingeloggt -->
+        <div class="buttons" th:unless="${currentUser.user != null}">
+            <a th:href="@{/login}" class="btn">Login</a>
+        </div>
+            <a th:href="@{/account}" class="btn">Nutzerkonto</a>
+        </div>
+    </header>
+</body>
+</html>
